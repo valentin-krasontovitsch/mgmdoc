@@ -1,0 +1,53 @@
+---
+variables:
+  HTTPS_PROXY: http://proxy.ihelse.net:3128
+  HTTP_PROXY: http://proxy.ihelse.net:3128
+  NODE_ENV: production
+
+stages:
+  - build
+  - image
+
+
+build:
+  stage: build
+  image: node:6
+  cache:
+    paths:
+      - node_modules
+    key: "node_modules"
+    untracked: true
+  script:
+    - npm set registry http://mgmapi.knf.local/verdaccio
+    - npm config set strict-ssl=false
+    - npm install --frozen-lockfile --production=false
+    - npm run-script build
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - dist
+
+build image:
+  stage: image
+  script:
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+    - docker build -t  $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG .
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+    - echo pushed $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+    - if ! [ -z "$CI_BUILD_TAG" ]; then
+      docker tag $CI_REGISTRY_IMAGE:$CI_BUILD_REF_SLUG
+      $CI_REGISTRY_IMAGE:$CI_BUILD_TAG &&
+      docker push $CI_REGISTRY_IMAGE:$CI_BUILD_TAG &&
+      echo pushed $CI_REGISTRY_IMAGE:$CI_BUILD_TAG; fi
+  tags:
+    - dind
+
+pages:
+  stage: build
+  script:
+    - build_docs
+  artifacts:
+    paths:
+      - public
+  tags:
+    - pages

@@ -1,0 +1,24 @@
+.DS_Store
+node_modules/
+dist/
+npm-debug.log
+test/unit/coverage
+/npm-debug.log.*
+.idea
+npm-debug.log
+yarn-error.log
+
+# Swap
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]
+
+# Session
+Session.vim
+
+# Temporary
+.netrwhist
+*~
+# Auto-generated tag files
+tags

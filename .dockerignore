@@ -1,0 +1,7 @@
+build
+config
+src
+static
+test
+node_modules
+.yarn
