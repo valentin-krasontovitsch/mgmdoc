@@ -16,6 +16,7 @@ build:
     paths:
       - node_modules
   script:
+    - ls node_modules/ || echo no folder node_modules
     - npm set registry http://mgmapi.knf.local/verdaccio
     - npm config set strict-ssl=false
     - npm install --frozen-lockfile --production=false
