@@ -1,4 +1,7 @@
 <style>
+  #labelled-input {
+    padding-top: 8px;
+  }
   .labelled_input {
     max-width: 100%; /* hack for IE, not necessary in other browsers O_o */
     min-width: 80%;
@@ -9,7 +12,7 @@
     flex-wrap: wrap;
     justify-content: center;
   }
-  .mdl-badge.mdl-badge--overlap {
+  .mdc-badge.mdc-badge--overlap {
     margin: 0pt;
   }
   .spacy {
@@ -22,47 +25,44 @@
 
 <template>
   <div class="flex-column labelled_input" :id="'input-' + id">
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <div class="mdc-text-field mdc-js-text-field mdc-text-field--floating-label">
       <input
-         class="mdl-textfield__input"
+         class="mdc-text-field__input"
          type="text"
          :id="id"
          @input="updateValue"
          autofocus
       >
-      <label class="mdl-textfield__label" :for="id">{{ label }}</label>
+      <label class="mdc-textfield__label" :for="id">{{ label }}</label>
     </div>
     <div class="button-box" v-if="noMatches">
-      <button class="warning spacy mdl-button mdl-js-button mdl-button--raised
-              mdl-button--accent" >
+      <button class="warning spacy mdc-button mdc-js-button mdc-button--raised
+              mdc-button--accent" >
         {{ warningNoMatches }}
       </button>
     </div>
     <div class="button-box">
-      <form
-        formmethod="get"
-        v-for="item, index in filteredList"
+      <div class="spacy"
         style="display: inline"
-        class="spacy"
+        v-for="item, index in filteredList"
         @mousemove="chosen = index" >
-        <button
-          :formaction="`${item.docs_url}`"
-          :class="`complete mdl-button
-            mdl-js-button mdl-button--raised
-            ${index == chosen ? 'mdl-button--accent' : 'mdl-button--colored'
+        <a
+          :href="`${item.docs_url}`"
+          :class="`complete mdc-button
+            mdc-js-button mdc-button--raised
+            ${index == chosen ? 'mdc-button--accent' : 'mdc-button--colored'
             }`"
             @mousemove="chosen = index"
             @focus="chosen = index"
             @blur="chosen = undefined" >
             {{ item.name }}
-        </button>
-      </form>
+        </a>
+      </div>
     </div>
-    </div>
+  </div>
 </template>
 
 <script>
-
 export default {
   props: {
     label: {
@@ -71,7 +71,7 @@ export default {
     },
     id: {
       type: String,
-      default: ''
+      default: 'labelled-input'
     },
     dataUrl: {
       type: String,
@@ -112,7 +112,11 @@ export default {
         })
     },
     filterListByPartialInput: function (input) {
-      const filteredList = this.fullList.filter(item => item.name.startsWith(input))
+      const filteredList = this.fullList.filter(item => {
+        console.log(input.toLowerCase())
+        console.log(item.name)
+        return item.name.startsWith(input.toLowerCase())
+      })
       if (filteredList.length === 0) {
         this.noMatches = true
         this.filteredList = this.fullList
@@ -129,7 +133,11 @@ export default {
   mounted () {
     this.$el.getElementsByTagName('input')[0].focus()
     this.getUrl(this.dataUrl).then(data => {
-      var sortedData = data.sort((a, b) =>
+      let lowerCaseData = data.map(dataPoint => {
+        dataPoint.name = dataPoint.name.toLowerCase()
+        return dataPoint
+      })
+      let sortedData = lowerCaseData.sort((a, b) =>
         a.name < b.name ? -1 : a.name > b.name
       )
       this.fullList = sortedData

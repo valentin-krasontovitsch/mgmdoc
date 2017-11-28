@@ -9,56 +9,56 @@ body {
   -webkit-transform:translate3d(0,0,0);
 }
 
-.mdl-layout__header {
+.mdc-layout__header {
   background-color: $layout__header-background-color;
   color: contrasting-color($layout__header-background-color, $light-text-color, $dark-text-color);
 }
 
-.mdl-card__title {
+.mdc-card__title {
   background-color: $card__title-background-color;
   color: contrasting-color($card__title-background-color, $light-text-color, $dark-text-color);
 }
 
-.mdl-card__media {
+.mdc-card__media {
   background-color: transparent;
 }
 
-.mdl-card__media.mdl-card--border {
+.mdc-card__media.mdc-card--border {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
 
-.mdl-card__supporting-text.mdl-card--border {
+.mdc-card__supporting-text.mdc-card--border {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
 
-.mdl-card.card-wide {
+.mdc-card.card-wide {
   width: 512px;
 }
 
-.mdl-card.card-full-width {
+.mdc-card.card-full-width {
   width: 100%;
 }
 
-.mdl-button.mdl-button--accent.mdl-button--raised {
+.mdc-button.mdc-button--accent.mdc-button--raised {
   background-color: $mdl-button--accent-color;
   color: contrasting-color($mdl-button--accent-color,$light-text-color,$dark-text-color);
 }
 
-.mdl-card__actions {
+.mdc-card__actions {
   background-color: $card__actions-background-color;
 }
 
-.card-full-width .mdl-card__supporting-text {
+.card-full-width .mdc-card__supporting-text {
   padding: 32px;
 }
 
-.card-wide .mdl-card__supporting-text {
+.card-wide .mdc-card__supporting-text {
   padding: 25.5px;
 }
 
-// fixes bug with mdl tooltips in chrome
-.mdl-tooltip {
+// fixes bug with mdc tooltips in chrome
+.mdc-tooltip {
   will-change: unset;
 }
 
-.mdl-layout__header-row {
+.mdc-layout__header-row {
   padding-right: 0px;
 }
