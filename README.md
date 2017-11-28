@@ -2,6 +2,10 @@
 
 > Front end for MGM it projects documentation
 
+## Config
+
+The uri for the pages linker backend api is set in the Dockerfile.
+
 ## Build Setup
 
 ``` bash
