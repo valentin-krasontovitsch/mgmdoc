@@ -7,6 +7,7 @@ import Vue from 'vue'
 import Axios from 'axios'
 import Router from 'vue-router'
 import FilteredList from '@/components/filtered_list.vue'
+require('material-components-web/dist/material-components-web.css')
 Vue.prototype.$http = Axios
 console.log('I am application.js, entrypoint for all?')
 
