@@ -1,0 +1,64 @@
+@import '~mgm-colors/lib/colors';
+
+body {
+  background: $body-background-color;
+}
+
+// TODO HACK!!! This fixes a bug with safari, where things out of visible range that undergo a transformation remain unvisible when scrolled to
+.page-content {
+  -webkit-transform:translate3d(0,0,0);
+}
+
+.mdl-layout__header {
+  background-color: $layout__header-background-color;
+  color: contrasting-color($layout__header-background-color, $light-text-color, $dark-text-color);
+}
+
+.mdl-card__title {
+  background-color: $card__title-background-color;
+  color: contrasting-color($card__title-background-color, $light-text-color, $dark-text-color);
+}
+
+.mdl-card__media {
+  background-color: transparent;
+}
+
+.mdl-card__media.mdl-card--border {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+
+.mdl-card__supporting-text.mdl-card--border {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+
+.mdl-card.card-wide {
+  width: 512px;
+}
+
+.mdl-card.card-full-width {
+  width: 100%;
+}
+
+.mdl-button.mdl-button--accent.mdl-button--raised {
+  background-color: $mdl-button--accent-color;
+  color: contrasting-color($mdl-button--accent-color,$light-text-color,$dark-text-color);
+}
+
+.mdl-card__actions {
+  background-color: $card__actions-background-color;
+}
+
+.card-full-width .mdl-card__supporting-text {
+  padding: 32px;
+}
+
+.card-wide .mdl-card__supporting-text {
+  padding: 25.5px;
+}
+
+// fixes bug with mdl tooltips in chrome
+.mdl-tooltip {
+  will-change: unset;
+}
+
+.mdl-layout__header-row {
+  padding-right: 0px;
+}

@@ -1,0 +1,34 @@
+@import '~mgm-colors/lib/colors';
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* for alignment along main axis */
+  align-items: center; /* for alignment along cross axis */
+}
+.full-width {
+  width: 100%
+}
+.custom-link > .plot__text {
+  text-decoration: underline;
+  fill: DarkOrchid;
+}
+.custom-link:hover {
+  font-weight: bold;
+}
+.custom-link:visited {
+  fill: $palette1-triad3;
+}
+.custom-link:focus {
+  font-weight: bold;
+}
+.custom-link:active {
+}
+.position-relative {
+  position: relative;
+}
+.position-absolute-upper-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

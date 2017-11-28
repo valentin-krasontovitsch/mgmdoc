@@ -1,7 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
+    <h1>MGM IT Documentation</h1>
     <ul>
       <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
       <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
@@ -22,7 +21,7 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Ove',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
