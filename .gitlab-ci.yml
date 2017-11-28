@@ -15,8 +15,6 @@ build:
   cache:
     paths:
       - node_modules
-    key: "node_modules"
-    untracked: true
   script:
     - npm set registry http://mgmapi.knf.local/verdaccio
     - npm config set strict-ssl=false
