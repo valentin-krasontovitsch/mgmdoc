@@ -21,6 +21,9 @@
   .quite-spacy {
     margin: 10pt;
   }
+  a.mdc-button {
+    text-transform: none;
+  }
 </style>
 
 <template>

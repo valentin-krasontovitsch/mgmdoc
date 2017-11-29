@@ -17,7 +17,7 @@ export default new Router({
       path: '/',
       name: 'list',
       component: FilteredList,
-      props: { dataUrl: window.env['PAGES_LINKER_API'], label: 'Name' }
+      props: { dataUrl: window.env['PAGES_LINKER_API'], label: 'name' }
     }
   ]
 })
